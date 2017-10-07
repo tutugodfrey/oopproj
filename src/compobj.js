@@ -2,41 +2,61 @@
 /*
  this class definition for management of the and their staffing activities
  */
-
+//module.exports = {
 class Company {
-	constructor (compname, complocation, numstaff){
-		 this.compname = compname;
-		 this.complocation = complocation;
-		 this.numstaff = numstaff;
+	constructor (compName, compLocation, numStaff, startOffYear){
+		 this.compName = compName;
+		 this.compLocation = compLocation;
+		 this.numStaff = numStaff;
+		 this.startOffYear = startOffYear;
 	}
 
-	companyinfo (){
-		return this.compname + " is located at " + this.complocation + " and " 
-		+ this.compname + " is currently being staffed by a total of this.numstaff.";
+	getInfo(){
+		return this.compName + " is located at " + this.compLocation + " and " 
+		+ this.compName + " is currently being staffed by a total of " + this.numStaff + ".";
 	}
 
-	numberofstaff(){
-		return this.numstaff;
+	numberOfStaff(){
+		return this.numStaff;
 	}
 
-	complocation (){
-		return this.complocation;
+	companyLocation(){
+		return this.compLocation;
 	}
 
 }
 
 class Staff extends Company {
-	constructor (staffname, staffage, staffpay, staffposition){
-		this.staffname = staffname;
-		this.staffage = staffage;
-		this.staffpay = staffpay;
-		this.staffposition = position;
+	
+	constructor (compName, staffName, staffPay, staffPosition){
+		super(compName)
+		this.staffName = staffName;
+		//this.staffAge = staffAge;
+		this.staffPay = staffPay;
+		this.staffPosition = staffPosition; 
 	}
-
-	staffinfo(){
-		return this.staffname + " a staff of " + this.compname  + " and " + this.staffname + " is earning " + this.staffpay + " monthly" ;
-
-	}
+	
+	getInfo(){
+		return this.staffName + " is a " + this.staffPosition + " in " + this.compName + " and is earning " + this.staffPay + " monthly" ;
+	}  
 }
 
 
+class Manager extends Company {
+	constructor(compname, complocation, numstaff, allowance){
+		super();
+		this.compname = compname;
+		 this.complocation = complocation;
+		 this.numstaff = numstaff;
+		 this.allowance = allowance;
+	}
+
+}
+
+
+//}  //end export block
+
+module.exports = {
+	Company,
+	Staff,
+}
